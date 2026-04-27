@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zuhami – Portfolio</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ocean-deep:   #050d1a;
+      --ocean-mid:    #071b33;
+      --ocean-light:  #0a2a50;
+      --teal:         #00c6c6;
+      --cyan:         #00e5ff;
+      --gold:         #ffd166;
+      --text:         #d6eaf8;
+      --text-dim:     #7fb3d3;
+      --card-bg:      rgba(10,42,80,0.75);
+      --radius:       16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--ocean-deep);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ocean-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+    /* ── Bubble Canvas ── */
+    #bubbles {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(5,13,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,198,198,0.15);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--teal); letter-spacing: 1px;
+    }
+    .nav-logo span { color: var(--cyan); }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul a {
+      color: var(--text-dim); text-decoration: none;
+      font-size: .95rem; transition: color .25s;
+    }
+    nav ul a:hover { color: var(--cyan); }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+    }
+    .hero-fish-wrap {
+      margin-bottom: 32px;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-18px); }
+    }
+
+    /* ── SVG Blowfish ── */
+    .blowfish-svg {
+      width: 180px; height: 180px;
+      filter: drop-shadow(0 0 24px rgba(0,229,255,.55));
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem; color: var(--text-dim);
+      max-width: 520px; line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-subtitle strong { color: var(--teal); }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px; border-radius: 50px;
+      background: linear-gradient(135deg, var(--teal), var(--cyan));
+      color: var(--ocean-deep); font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 0 28px rgba(0,229,255,.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 44px rgba(0,229,255,.65);
+    }
+
+    /* ── Sections ── */
+    section { position: relative; z-index: 1; padding: 100px 24px; }
+    .section-inner { max-width: 960px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(0,198,198,.12);
+      border: 1px solid rgba(0,198,198,.3);
+      color: var(--teal); font-size: .8rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; margin-bottom: 20px;
+      color: #fff;
+    }
+    .section-title span { color: var(--cyan); }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--cyan));
+      border-radius: 2px; margin-bottom: 40px;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: center;
+    }
+    .about-text p {
+      color: var(--text-dim); line-height: 1.8;
+      font-size: 1.05rem; margin-bottom: 16px;
+    }
+    .about-text p strong { color: var(--text); }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 24px;
+    }
+    .skill-chip {
+      background: rgba(0,198,198,.12);
+      border: 1px solid rgba(0,198,198,.3);
+      color: var(--teal); padding: 6px 16px;
+      border-radius: 50px; font-size: .85rem; font-weight: 600;
+      transition: background .2s;
+    }
+    .skill-chip:hover { background: rgba(0,198,198,.25); }
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0,198,198,.18);
+      border-radius: var(--radius);
+      padding: 32px;
+      backdrop-filter: blur(8px);
+    }
+    .stat { margin-bottom: 20px; }
+    .stat-label { font-size: .8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+    .stat-value { font-size: 2rem; font-weight: 800; color: var(--cyan); }
+    .stat-desc  { font-size: .9rem; color: var(--text-dim); }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0,198,198,.15);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--cyan));
+      opacity: 0; transition: opacity .25s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,198,198,.4);
+      box-shadow: 0 12px 40px rgba(0,198,198,.15);
+    }
+    .project-card:hover::before { opacity: 1; }
+    .project-icon {
+      font-size: 2.2rem; margin-bottom: 16px;
+    }
+    .project-title {
+      font-size: 1.15rem; font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+    }
+    .project-desc {
+      color: var(--text-dim); font-size: .92rem;
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .project-tag {
+      background: rgba(0,229,255,.08);
+      border: 1px solid rgba(0,229,255,.2);
+      color: var(--cyan); font-size: .75rem;
+      padding: 3px 10px; border-radius: 50px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 40px 24px;
+      border-top: 1px solid rgba(0,198,198,.1);
+      color: var(--text-dim); font-size: .9rem;
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { color: var(--cyan); }
+
+    /* ── Fade-in animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      nav { padding: 14px 20px; }
+      nav ul { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Bubble background -->
+<canvas id="bubbles"></canvas>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-logo">Z<span>.</span>Portfolio</div>
+  <ul>
+    <li><a href="#about">Om mig</a></li>
+    <li><a href="#projects">Projekter</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-fish-wrap">
+    <svg class="blowfish-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Spikes -->
+      <g fill="none" stroke="#00e5ff" stroke-width="2.5" stroke-linecap="round">
+        <line x1="100" y1="42" x2="100" y2="10"/>
+        <line x1="78"  y1="47" x2="66"  y2="18"/>
+        <line x1="122" y1="47" x2="134" y2="18"/>
+        <line x1="60"  y1="60" x2="44"  y2="36"/>
+        <line x1="140" y1="60" x2="156" y2="36"/>
+        <line x1="100" y1="158" x2="100" y2="190"/>
+        <line x1="78"  y1="153" x2="66"  y2="182"/>
+        <line x1="122" y1="153" x2="134" y2="182"/>
+        <line x1="60"  y1="140" x2="44"  y2="164"/>
+        <line x1="140" y1="140" x2="156" y2="164"/>
+        <line x1="42"  y1="100" x2="10"  y2="100"/>
+        <line x1="158" y1="100" x2="190" y2="100"/>
+        <line x1="44"  y1="80"  x2="18"  y2="72"/>
+        <line x1="44"  y1="120" x2="18"  y2="128"/>
+        <line x1="156" y1="80"  x2="182" y2="72"/>
+        <line x1="156" y1="120" x2="182" y2="128"/>
+      </g>
+      <!-- Body -->
+      <circle cx="100" cy="100" r="58"
+        fill="url(#bf-grad)"
+        stroke="#00c6c6" stroke-width="2.5"/>
+      <!-- Belly sheen -->
+      <ellipse cx="100" cy="108" rx="36" ry="28"
+        fill="rgba(0,229,255,0.08)"/>
+      <!-- Stripes -->
+      <path d="M60 80 Q100 90 140 80"  fill="none" stroke="rgba(0,229,255,0.2)"  stroke-width="8" stroke-linecap="round"/>
+      <path d="M55 100 Q100 112 145 100" fill="none" stroke="rgba(0,229,255,0.12)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M60 120 Q100 130 140 120" fill="none" stroke="rgba(0,229,255,0.08)" stroke-width="8" stroke-linecap="round"/>
+      <!-- Tail -->
+      <path d="M155 90 Q178 100 155 110" fill="none" stroke="#00c6c6" stroke-width="3" stroke-linecap="round"/>
+      <!-- Eye white -->
+      <circle cx="82" cy="90" r="11" fill="#e8f8ff"/>
+      <!-- Pupil -->
+      <circle cx="79" cy="89" r="6" fill="#0a2a50"/>
+      <!-- Eye shine -->
+      <circle cx="77" cy="87" r="2.5" fill="#fff"/>
+      <!-- Mouth -->
+      <ellipse cx="72" cy="104" rx="8" ry="6"
+        fill="#0a2a50" stroke="#00c6c6" stroke-width="1.5"/>
+      <ellipse cx="72" cy="103" rx="5" ry="3" fill="rgba(0,229,255,0.2)"/>
+      <!-- Fin top -->
+      <path d="M90 44 Q100 30 110 44" fill="rgba(0,198,198,0.35)" stroke="#00c6c6" stroke-width="1.5"/>
+      <!-- Fin bottom -->
+      <path d="M90 156 Q100 170 110 156" fill="rgba(0,198,198,0.35)" stroke="#00c6c6" stroke-width="1.5"/>
+      <defs>
+        <radialGradient id="bf-grad" cx="38%" cy="38%" r="65%">
+          <stop offset="0%"   stop-color="#0e4a7a"/>
+          <stop offset="55%"  stop-color="#083b6a"/>
+          <stop offset="100%" stop-color="#051a33"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">Hej, jeg er Zuhami</h1>
+  <p class="hero-subtitle">
+    Datamatikerstuderende med passion for <strong>teknologi og problemløsning</strong> —
+    jeg bygger smarte løsninger og lærer nyt hver dag.
+  </p>
+  <a href="#about" class="btn-primary">Lær mig at kende →</a>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-inner">
+    <span class="section-tag">01 — Om mig</span>
+    <h2 class="section-title">Hvem er <span>jeg?</span></h2>
+    <div class="divider"></div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>
+          Jeg hedder <strong>Zuhami</strong> og er datamatikerstuderende.
+          Jeg er fascineret af, hvordan teknologi kan løse virkelige problemer —
+          fra smarte algoritmer til brugervenlige interfaces.
+        </p>
+        <p>
+          Jeg arbejder aktivt med <strong>AI-drevne løsninger</strong> og udnytter
+          moderne teknologier til at skabe projekter der både er funktionelle og elegante.
+        </p>
+        <p>
+          Uden for koden kan du finde mig nysgerrig på alt fra netværk og sikkerhed
+          til UI-design og systemarkitektur.
+        </p>
+        <div class="skills-list">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Java</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">HTML &amp; CSS</span>
+          <span class="skill-chip">AI / ML</span>
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">Linux</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="stat">
+          <div class="stat-label">Uddannelse</div>
+          <div class="stat-value">Datamatiker</div>
+          <div class="stat-desc">Professionsbachelor i softwareudvikling</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Fokus</div>
+          <div class="stat-value" style="color:var(--gold)">AI &amp; Dev</div>
+          <div class="stat-desc">Kunstig intelligens og fuld-stack udvikling</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Tilgængelighed</div>
+          <div class="stat-value" style="color:#6fffc8; font-size:1.4rem">● Tilgængelig</div>
+          <div class="stat-desc">Åben for projekter og samarbejde</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" style="background: rgba(7,27,51,0.4);">
+  <div class="section-inner">
+    <span class="section-tag">02 — Projekter</span>
+    <h2 class="section-title">Mine <span>projekter</span></h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-icon">🤖</div>
+        <div class="project-title">AI Portfolio Builder</div>
+        <div class="project-desc">
+          Et projekt der bruger AI til automatisk at generere og opdatere portefølje-hjemmesider
+          baseret på brugerdata og præferencer.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">AI / Claude</span>
+          <span class="project-tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="transition-delay:.1s">
+        <div class="project-icon">🗄️</div>
+        <div class="project-title">Database Management System</div>
+        <div class="project-desc">
+          Et fuldt relationelt databasesystem med REST API, brugeradministration og
+          avancerede forespørgsler til datahåndtering.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">REST API</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="transition-delay:.2s">
+        <div class="project-icon">🌐</div>
+        <div class="project-title">Webapplikation</div>
+        <div class="project-desc">
+          En responsiv webapplikation med moderne UI/UX, realtidsopdateringer
+          og integration med eksterne services.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>Designet &amp; bygget af <a href="#">Zuhami</a> · Datamatiker · 2026</p>
+  <p style="margin-top:8px; font-size:.8rem; opacity:.5;">Lavet med 🐡 og AI</p>
+</footer>
+
+<script>
+/* ── Bubble Canvas ── */
+(function(){
+  const canvas = document.getElementById('bubbles');
+  const ctx = canvas.getContext('2d');
+  let W, H, bubbles;
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function makeBubble(){
+    return {
+      x: Math.random() * W,
+      y: H + Math.random() * 80,
+      r: Math.random() * 8 + 3,
+      speed: Math.random() * .6 + .2,
+      opacity: Math.random() * .18 + .04,
+      dx: (Math.random() - .5) * .4
+    };
+  }
+
+  bubbles = Array.from({length: 55}, makeBubble);
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    bubbles.forEach(b => {
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0,198,198,${b.opacity})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(b.x - b.r*.3, b.y - b.r*.3, b.r*.28, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${b.opacity * .7})`;
+      ctx.fill();
+      b.y  -= b.speed;
+      b.x  += b.dx;
+      if(b.y + b.r < 0) Object.assign(b, makeBubble(), {y: H + b.r});
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── Scroll fade-in ── */
+(function(){
+  const els = document.querySelectorAll('.fade-up');
+  const io  = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: .12 });
+  els.forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
