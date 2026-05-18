@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gang 2 — Retrieval Augmented Generation (RAG) — Ayman Chaykh</title>
+  <meta name="description" content="Building a simple RAG chatbot with Dify.ai using the studieordning as a knowledge source." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08080f;
+      --bg2: #111120;
+      --card: #13131f;
+      --border: rgba(255,255,255,0.07);
+      --accent1: #6366f1;
+      --accent2: #a855f7;
+      --accent3: #06b6d4;
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(8,8,15,0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    main { max-width: 720px; margin: 0 auto; padding: 8rem 2rem 5rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--muted); text-decoration: none; font-size: 0.85rem;
+      margin-bottom: 2.5rem; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+
+    .post-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .post-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 3rem; }
+    .tag {
+      font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: rgba(99,102,241,0.1); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.2);
+    }
+
+    .post-body { color: #cbd5e1; font-size: 1rem; line-height: 1.85; }
+    .post-body h2 {
+      font-size: 1.35rem; font-weight: 700; color: var(--text);
+      margin: 2.5rem 0 0.75rem; letter-spacing: -0.01em;
+    }
+    .post-body h3 {
+      font-size: 1.05rem; font-weight: 600; color: #e2e8f0;
+      margin: 1.75rem 0 0.5rem;
+    }
+    .post-body p { margin-bottom: 1.25rem; }
+    .post-body p:last-child { margin-bottom: 0; }
+    .post-body ul { padding-left: 1.25rem; margin-bottom: 1.25rem; }
+    .post-body li { margin-bottom: 0.5rem; }
+    .post-body strong { color: #e2e8f0; font-weight: 600; }
+    .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .post-body code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85em;
+      background: rgba(99,102,241,0.12);
+      color: #a5b4fc;
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+    }
+
+    .compare-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    .compare-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem;
+    }
+    .compare-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+    .compare-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .compare-card .pro { color: #86efac; font-size: 0.78rem; }
+    .compare-card .con { color: #fca5a5; font-size: 0.78rem; }
+
+    .arch-diagram {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem; color: #94a3b8;
+      margin: 1.25rem 0; line-height: 1.9;
+    }
+    .arch-diagram .highlight { color: #a5b4fc; }
+
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1.25rem; }
+      main { padding: 6rem 1.25rem 3rem; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/Portfolio/" class="nav-logo">AC</a>
+    <ul class="nav-links">
+      <li><a href="/Portfolio/#projects">Projects</a></li>
+      <li><a href="/Portfolio/#about">About</a></li>
+      <li><a href="/Portfolio/#contact">Contact</a></li>
+      <li><a href="/Portfolio/posts/" class="active">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <a href="/Portfolio/posts/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      All posts
+    </a>
+
+    <p class="post-meta">April 13, 2026 &nbsp;·&nbsp; Gang 2 &nbsp;·&nbsp; AI-Driven Applications</p>
+    <h1 class="post-title">Gang 2 — Retrieval Augmented Generation (RAG)</h1>
+    <div class="post-tags">
+      <span class="tag">rag</span>
+      <span class="tag">dify</span>
+      <span class="tag">embeddings</span>
+      <span class="tag">llm</span>
+    </div>
+
+    <div class="post-body">
+
+      <h2>What is RAG?</h2>
+      <p>
+        A plain LLM only knows what was in its training data. RAG — Retrieval Augmented Generation —
+        extends that by giving the model a live knowledge source to search at query time. The flow is:
+      </p>
+
+      <div class="arch-diagram">
+        <span class="highlight">User question</span>
+          → embed question
+          → search vector store
+          → retrieve top-k chunks
+          → inject into prompt
+          → <span class="highlight">LLM answers</span>
+      </div>
+
+      <p>
+        This solves two problems: the model can answer questions about documents it never trained on,
+        and it can cite specific passages rather than hallucinating a plausible-sounding answer.
+      </p>
+      <p>
+        RAG makes most sense when the source material changes often, is private, or is too large to
+        fit in a single prompt. It's less useful for general reasoning tasks where the model's
+        training knowledge is already sufficient.
+      </p>
+
+      <hr />
+
+      <h2>Three Approaches We Compared</h2>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4>ChatGPT CustomGPT</h4>
+          <p class="pro">✓ Zero setup, familiar UI</p>
+          <p class="con">✗ Locked into OpenAI<br/>✗ Limited control over retrieval</p>
+        </div>
+        <div class="compare-card">
+          <h4>customGPT.ai</h4>
+          <p class="pro">✓ Easy embedding widget</p>
+          <p class="con">✗ Paid from the start<br/>✗ Black-box retrieval</p>
+        </div>
+        <div class="compare-card">
+          <h4>Dify.ai</h4>
+          <p class="pro">✓ Open source option<br/>✓ Full pipeline control</p>
+          <p class="con">✗ More moving parts<br/>✗ Steeper learning curve</p>
+        </div>
+      </div>
+
+      <p>
+        We chose to implement with <strong>Dify.ai</strong> for the hands-on part. It exposes the
+        full RAG pipeline — chunking strategy, embedding model, retrieval settings — which makes
+        it easier to understand what's actually happening under the hood.
+      </p>
+
+      <hr />
+
+      <h2>What We Built</h2>
+      <p>
+        We built a chatbot that answers questions about our studieordning (programme regulations).
+        The document is dense, PDF-formatted policy text — exactly the kind of thing nobody wants
+        to search through manually.
+      </p>
+
+      <h3>Preparing the data</h3>
+      <p>
+        Before uploading, we converted the PDF to Markdown. Raw PDF extraction is noisy: headers
+        get merged with body text, tables break, and page numbers end up mid-sentence. Markdown
+        gives the chunker clean boundaries to work with, which improves retrieval quality.
+      </p>
+
+      <h3>Chunking and indexing</h3>
+      <p>
+        Dify split the document into overlapping chunks and ran each through an embedding model
+        to produce a vector representation. These vectors are stored in a database and searched
+        at query time using cosine similarity.
+      </p>
+
+      <h3>The chatbot</h3>
+      <p>
+        With the knowledge base connected, the chatbot retrieves the most relevant chunks for
+        each question and includes them in the prompt. The system prompt constrains the model to
+        only answer based on the provided document — reducing hallucination and keeping responses
+        on-topic.
+      </p>
+
+      <hr />
+
+      <h2>Reflection</h2>
+      <p>
+        The most interesting part wasn't the chatbot itself — it was seeing how much the quality
+        of the <em>data preparation</em> mattered. The same question asked against the raw PDF
+        and the cleaned Markdown returned noticeably different answers. Garbage in, garbage out
+        applies to retrieval just as much as it does to training.
+      </p>
+      <p>
+        The comparison between the three tools also highlighted a real trade-off: ease of use versus
+        control. CustomGPT takes five minutes and works, but you're trusting a black box.
+        Dify takes longer to configure but you can actually debug why a retrieval failed.
+        For a production system I'd lean toward the more transparent option — bugs in a RAG
+        pipeline are subtle and hard to catch if you can't inspect the retrieved chunks.
+      </p>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ayman Chaykh. Built with care.</p>
+  </footer>
+
+</body>
+</html>
