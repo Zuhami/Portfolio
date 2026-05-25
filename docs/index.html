@@ -50,6 +50,41 @@
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
 
+    /* BLOG */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.25rem; }
+    .blog-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: all 0.25s; text-decoration: none; display: flex; flex-direction: column;
+    }
+    .blog-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(99,102,241,0.12); background: #16162a; }
+    .blog-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .blog-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; line-height: 1.4; }
+    .blog-desc { font-size: 0.9rem; color: var(--muted); flex: 1; line-height: 1.7; margin-bottom: 1.25rem; }
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    /* BLOG POST PAGE */
+    .post-page { display: none; position: fixed; inset: 0; z-index: 200; background: var(--bg); overflow-y: auto; }
+    .post-page.open { display: block; }
+    .post-inner { max-width: 720px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+    .post-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent1); font-size: 0.9rem; cursor: pointer; margin-bottom: 2rem; background: none; border: none; }
+    .post-back:hover { opacity: 0.8; }
+    .post-header { margin-bottom: 2.5rem; }
+    .post-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .post-h1 { font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
+    .post-desc { font-size: 1rem; color: #94a3b8; }
+    .post-body { color: #cbd5e1; line-height: 1.85; font-size: 0.98rem; }
+    .post-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2rem 0 0.75rem; }
+    .post-body p { margin-bottom: 1rem; }
+    .post-body ul, .post-body ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .post-body li { margin-bottom: 0.4rem; }
+    .post-body strong { color: var(--text); }
+    .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .post-body table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+    .post-body th { background: rgba(99,102,241,0.12); color: var(--text); padding: 0.6rem 1rem; text-align: left; border: 1px solid var(--border); }
+    .post-body td { padding: 0.6rem 1rem; border: 1px solid var(--border); color: #94a3b8; }
+    .post-body code { background: rgba(255,255,255,0.06); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #a5b4fc; }
+
     /* HERO */
     #hero {
       min-height: 100vh;
@@ -170,6 +205,7 @@
     <a href="#hero" class="nav-logo">AC</a>
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="/Portfolio/posts/">Blog</a></li>
@@ -267,6 +303,107 @@
     </div>
   </section>
 
+  <!-- BLOG -->
+  <section id="blog" style="border-top:1px solid var(--border)">
+    <p class="section-label">Blog</p>
+    <h2 class="section-title">Blogindlæg</h2>
+    <p class="section-sub">Refleksioner fra kurset AI-drevne applikationer.</p>
+    <div class="blog-grid">
+
+      <div class="blog-card" onclick="openPost('post1')" style="cursor:pointer;">
+        <div class="blog-date">10. april 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <div class="blog-title">Gang 1 — Kursusintro &amp; Portfolio-opsætning</div>
+        <p class="blog-desc">Vi satte Hugo-portfolios op og snakkede om hvad vi egentlig forventer at få ud af kurset.</p>
+        <div class="blog-tags">
+          <span class="tag">hugo</span><span class="tag">portfolio</span><span class="tag">ai</span><span class="tag">refleksion</span>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost('post2')" style="cursor:pointer;">
+        <div class="blog-date">17. april 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <div class="blog-title">Gang 2 — Retrieval Augmented Generation (RAG)</div>
+        <p class="blog-desc">Vi prøvede tre forskellige RAG-værktøjer og endte med at bygge en chatbot til vores studieordning.</p>
+        <div class="blog-tags">
+          <span class="tag">rag</span><span class="tag">ai</span><span class="tag">llm</span><span class="tag">dify</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POST 1 -->
+  <div class="post-page" id="post1">
+    <div class="post-inner">
+      <button class="post-back" onclick="closePost('post1')">← Tilbage til blog</button>
+      <div class="post-header">
+        <div class="post-meta">10. april 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <h1 class="post-h1">Gang 1 — Kursusintro &amp; Portfolio-opsætning</h1>
+        <p class="post-desc">Vi satte Hugo-portfolios op og snakkede om hvad vi egentlig forventer at få ud af kurset.</p>
+      </div>
+      <div class="post-body">
+        <h2>Hvad vi lavede</h2>
+        <p>Første gang gik med at få styr på hvad kurset egentlig handler om — AI-drevne applikationer, hvordan LLM'er bruges i rigtig software, og hvad eksamen kommer til at se ud. Ret hurtigt efter gik vi i gang: alle skulle have et portfolio-site op at køre, som vi kan bruge til at dokumentere det vi bygger hen ad vejen.</p>
+        <p>Stacken:</p>
+        <ul>
+          <li><strong>Hugo</strong> — statisk site-generator, hurtige builds og nemt at deploye</li>
+          <li><strong>Blowfish</strong> — et Hugo-tema med dark mode og et fedt profilayout</li>
+          <li><strong>GitHub Pages</strong> — gratis hosting direkte fra repo'ets <code>docs/</code>-mappe</li>
+        </ul>
+        <p>Fra nul til live site tog ca. 30 minutter. Installer Hugo, klon Blowfish, konfigurer <code>params.toml</code>, kør <code>hugo</code>, push til GitHub og slå Pages til. Ret simpelt.</p>
+        <hr>
+        <h2>Refleksion — Hvad jeg håber at få ud af det her</h2>
+        <p>Inden kurset har jeg mest brugt LLM'er som en lidt klogere autocomplete — få svar på spørgsmål, generere boilerplate, forstå fejlmeddelelser. Det er praktisk, men det er bare et lag ovenpå den samme arbejdsgang som altid.</p>
+        <p>Det jeg synes er interessant er skridtet videre: AI ikke bare som hjælp mens man koder, men som en del af selve applikationen. En LLM der selv læser data, tager beslutninger og kalder andre systemer — det er en anden slags arkitektur end det vi normalt arbejder med.</p>
+        <p>Et par ting jeg er nysgerrig på:</p>
+        <p><strong>Prompt engineering som design.</strong> Måden man formulerer en opgave til en LLM har lige så meget at sige for resultatet som koden rundt om. Det lyder mere som at skrive specifikationer end instruktioner.</p>
+        <p><strong>Hvornår skal man ikke bruge en LLM.</strong> Ikke alt skal være AI. Jeg tror den svære del er at finde ud af præcis hvor det giver mening og hvor det bare er unødigt komplekst.</p>
+        <p><strong>Hvordan tester man det her.</strong> Normal software har unit tests. LLM-output er ikke deterministisk. Jeg aner ikke rigtigt hvordan man definerer "korrekt" i det setup, og det vil jeg gerne finde ud af.</p>
+        <p>Den ting jeg er mest skeptisk over for er hype. Mange "AI-drevne" produkter er bare et tyndt lag oven på en API. Jeg håber kurset giver mig nok indsigt til at se forskel på det og noget der faktisk er gennemtænkt.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-page" id="post2">
+    <div class="post-inner">
+      <button class="post-back" onclick="closePost('post2')">← Tilbage til blog</button>
+      <div class="post-header">
+        <div class="post-meta">17. april 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <h1 class="post-h1">Gang 2 — Retrieval Augmented Generation (RAG)</h1>
+        <p class="post-desc">Vi prøvede tre forskellige RAG-værktøjer og endte med at bygge en chatbot til vores studieordning.</p>
+      </div>
+      <div class="post-body">
+        <h2>Hvad er RAG?</h2>
+        <p>En normal LLM ved kun det den er trænet på. RAG — Retrieval Augmented Generation — løser det ved at give modellen en videnskilde den kan søge i, når der kommer et spørgsmål. Flowet ser nogenlunde sådan her ud:</p>
+        <p><strong>Spørgsmål → embed spørgsmålet → søg i vector store → hent de mest relevante chunks → smid dem ind i prompten → LLM svarer</strong></p>
+        <p>Det giver to fordele: modellen kan svare på spørgsmål om dokumenter den aldrig har set, og den kan pege på konkrete passager frem for at finde på et svar der lyder rigtigt.</p>
+        <p>RAG giver bedst mening når kildematerialet skifter tit, er privat, eller er for stort til at putte direkte i en prompt. Til generelle spørgsmål hvor modellen allerede ved nok er det bare unødigt komplekst.</p>
+        <hr>
+        <h2>Tre værktøjer vi kiggede på</h2>
+        <table>
+          <tr><th>Værktøj</th><th>Godt</th><th>Skidt</th></tr>
+          <tr><td><strong>ChatGPT CustomGPT</strong></td><td>Nul opsætning, man kender interfacet</td><td>Låst til OpenAI, ingen reel kontrol</td></tr>
+          <tr><td><strong>customGPT.ai</strong></td><td>Nem at embed'e på en side</td><td>Betalt fra start, black-box</td></tr>
+          <tr><td><strong>Dify.ai</strong></td><td>Open source, fuld kontrol over pipelinen</td><td>Lidt mere at sætte op</td></tr>
+        </table>
+        <p>Vi endte med at bruge <strong>Dify.ai</strong> til den praktiske del. Det er det eneste af de tre der lader dig se og justere hvad der faktisk sker — chunk-størrelse, embedding-model, retrieval-indstillinger og det hele.</p>
+        <hr>
+        <h2>Hvad vi byggede</h2>
+        <p>Vi lavede en chatbot der kan svare på spørgsmål om vores studieordning. Det er et tæt PDF-dokument fyldt med regler og formuleringer som ingen gider læse igennem manuelt — perfekt use case.</p>
+        <p><strong>Dataforberedelse</strong></p>
+        <p>Inden vi uploadede dokumentet konverterede vi det fra PDF til Markdown. Rå PDF-udtrækning er ret rodet — overskrifter blandes med brødtekst, tabeller går i stykker, sidetal dukker op midt i sætninger. Markdown giver chunker'en noget rent at arbejde med, og det mærkes på kvaliteten af svarene.</p>
+        <p><strong>Chunking og indeksering</strong></p>
+        <p>Dify deler dokumentet op i overlappende chunks og kører dem igennem en embedding-model der laver dem om til vektorer. De vektorer gemmes og søges via cosine similarity når der kommer et spørgsmål.</p>
+        <p><strong>Chatbotten</strong></p>
+        <p>Når man stiller et spørgsmål henter chatbotten de mest relevante chunks og putter dem ind i prompten. System-prompten siger til modellen at den kun må svare ud fra det dokument — det reducerer hallucination og holder den on-topic.</p>
+        <hr>
+        <h2>Refleksion</h2>
+        <p>Det mest interessante var ikke selve chatbotten — det var at se hvor meget dataforberedelsen betød. Det samme spørgsmål mod rå PDF og renset Markdown gav mærkbart forskellige svar. Garbage in, garbage out gælder åbenbart lige så meget her som alle andre steder.</p>
+        <p>Sammenligningen mellem værktøjerne viste også noget ret tydeligt: jo nemmere det er at komme i gang, jo mindre kan du se hvad der sker indeni. CustomGPT virker på fem minutter, men når det fejler ved du ikke hvorfor. Dify tager længere tid, men du kan faktisk debugge det. Til noget der skal bruges i produktion vil jeg altid foretrække at kunne se hvad der foregår.</p>
+      </div>
+    </div>
+  </div>
+
   <section id="contact">
     <p class="section-label">Contact</p>
     <h2 class="section-title">Let's work together</h2>
@@ -291,5 +428,19 @@
     <p>&copy; 2026 Ayman Chaykh. Built with care.</p>
   </footer>
 
+  <script>
+    function openPost(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0,0);
+    }
+    function closePost(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.post-page.open').forEach(p => { p.classList.remove('open'); document.body.style.overflow = ''; });
+    });
+  </script>
 </body>
 </html>
