@@ -1,5 +1,5 @@
 ---
-title: "Gang 3 — AI-drevet stadeholder-generator til Engestofte julemarked"
+title: "Projektopgave — AI-drevet stadeholder-generator til Engestofte julemarked"
 date: 2026-05-13
 description: "Vi identificerede et konkret problem hos en reel bruger og skitserede en MVP der løser det med Claude API og en simpel formular."
 tags: ["ai", "claude", "api", "webapp", "refleksion"]
