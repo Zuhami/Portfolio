@@ -327,6 +327,15 @@
         </div>
       </div>
 
+      <div class="blog-card" onclick="openPost('post3')" style="cursor:pointer;">
+        <div class="blog-date">13. maj 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <div class="blog-title">Gang 3 — AI-drevet stadeholder-generator til Engestofte julemarked</div>
+        <p class="blog-desc">Vi identificerede et konkret problem hos en reel bruger og skitserede en MVP der løser det med Claude API og en simpel formular.</p>
+        <div class="blog-tags">
+          <span class="tag">ai</span><span class="tag">claude</span><span class="tag">api</span><span class="tag">webapp</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -399,6 +408,67 @@
         <h2>Refleksion</h2>
         <p>Det mest interessante var ikke selve chatbotten — det var at se hvor meget dataforberedelsen betød. Det samme spørgsmål mod rå PDF og renset Markdown gav mærkbart forskellige svar. Garbage in, garbage out gælder åbenbart lige så meget her som alle andre steder.</p>
         <p>Sammenligningen mellem værktøjerne viste også noget ret tydeligt: jo nemmere det er at komme i gang, jo mindre kan du se hvad der sker indeni. CustomGPT virker på fem minutter, men når det fejler ved du ikke hvorfor. Dify tager længere tid, men du kan faktisk debugge det. Til noget der skal bruges i produktion vil jeg altid foretrække at kunne se hvad der foregår.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST 3 -->
+  <div class="post-page" id="post3">
+    <div class="post-inner">
+      <button class="post-back" onclick="closePost('post3')">← Tilbage til blog</button>
+      <div class="post-header">
+        <div class="post-meta">13. maj 2026 &nbsp;·&nbsp; AI-drevne applikationer</div>
+        <h1 class="post-h1">Gang 3 — AI-drevet stadeholder-generator til Engestofte julemarked</h1>
+        <p class="post-desc">Vi identificerede et konkret problem hos en reel bruger og skitserede en MVP der løser det med Claude API og en simpel formular.</p>
+      </div>
+      <div class="post-body">
+        <h2>Projektet</h2>
+        <p>Denne gang tog vi fat i et konkret, virkeligt problem — ikke et tutorial-eksempel, men noget der faktisk irriterer et rigtigt menneske i det daglige arbejde.</p>
+        <p>Engestofte Gods afholder julemarked hvert år med en lang liste af stadeholdere. Koordinatoren Lise opdaterer listen på hjemmesiden manuelt — hun skriver HTML direkte i Squarespace. Det er tidskrævende, kræver teknisk viden hun ikke har, og det er nemt at lave fejl, særligt når der er mange stadeholdere.</p>
+        <hr>
+        <h2>Problemet</h2>
+        <p>Lises nuværende arbejdsgang ser sådan her ud:</p>
+        <ol>
+          <li>Modtager stadeholderinfo via mail</li>
+          <li>Skriver eller retter HTML manuelt i Squarespace</li>
+          <li>Publicerer siden</li>
+        </ol>
+        <p>Ingen standardiseret format, ingen historik, ingen genbrug af data fra tidligere år. Det er præcis den slags opgave AI er god til: struktureret, gentagende, formatfølsom output fra varierende input.</p>
+        <hr>
+        <h2>Den foreslåede løsning</h2>
+        <p>En simpel webapp hvor Lise udfylder en formular med stadeholderinfo. Klikker hun på en knap, sender appen dataene til Claude (Anthropic API), som genererer færdig, korrekt formateret Squarespace-HTML — klar til copy-paste direkte ind på hjemmesiden.</p>
+        <p>Ingen kode. Ingen HTML. Ingen teknisk viden nødvendig.</p>
+        <hr>
+        <h2>MVP</h2>
+        <table>
+          <tr><th>Felt</th><th>Type</th></tr>
+          <tr><td>Navn</td><td>Tekstfelt</td></tr>
+          <tr><td>Beskrivelse</td><td>Tekstområde</td></tr>
+          <tr><td>Hjemmeside</td><td>URL-felt</td></tr>
+          <tr><td>Zone</td><td>Dropdown</td></tr>
+        </table>
+        <p>Knap → Claude API-kald → HTML vises i en tekstboks klar til copy-paste. Ingen login. Ingen database. Bare input → AI → output.</p>
+        <hr>
+        <h2>Hvad vi ikke bygger (endnu)</h2>
+        <p>Vi afgrænser projektet bevidst. Version 1 inkluderer ikke: direkte Squarespace-integration, login eller brugerstyring, database over historiske stadeholdere, plantegning over markedet eller Trello-integration. Det er version 2-opgaver.</p>
+        <hr>
+        <h2>Åbne spørgsmål</h2>
+        <ul>
+          <li><strong>Hvilke felter indeholder ansøgningsskemaet præcist?</strong> Vi kender ikke det fulde datasæt endnu.</li>
+          <li><strong>Hvilket HTML-format bruger Squarespace-siden i dag?</strong> Det skal reverse-engineers fra den live side.</li>
+          <li><strong>Er zonerne faste hvert år, eller ændrer de sig?</strong> Det har betydning for dropdown-designet.</li>
+        </ul>
+        <hr>
+        <h2>Næste skridt</h2>
+        <ol>
+          <li>Hent og analyser HTML-strukturen fra <code>engestofte.com/da/stadeholderliste</code> — vi skal kende det præcise format Claude skal generere.</li>
+          <li>Byg formular-interface med de kendte felter og koblet til Anthropic API.</li>
+          <li>Test output mod den rigtige side og finpuds system-prompten til den genererer korrekt HTML hver gang.</li>
+        </ol>
+        <hr>
+        <h2>Refleksion</h2>
+        <p>Det interessante ved dette projekt er ikke teknologien — det er problem-fittet. Claude kan sagtens generere HTML. Udfordringen er at få system-prompten til at generere <em>præcis den rigtige</em> HTML til <em>præcis dette</em> Squarespace-setup.</p>
+        <p>Det er også et godt eksempel på hvornår AI faktisk giver mening: ikke som erstatning for noget komplekst, men som erstatning for noget <em>kedeligt og fejlprone</em> — der er en stor forskel.</p>
       </div>
     </div>
   </div>
