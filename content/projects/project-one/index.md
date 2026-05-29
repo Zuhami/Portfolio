@@ -1,29 +1,42 @@
 ---
-title: "Project One"
-date: 2026-04-27
+title: "AI-drevet stadeholder-generator"
+date: 2026-05-29
 draft: false
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-tags: ["lorem", "ipsum", "web"]
+description: "Webapp der bruger Claude AI til at generere Squarespace-klar HTML for stadeholdere på Engestofte Gods julemarked."
+tags: ["python", "flask", "ai", "claude", "html"]
 weight: 1
 ---
 
-## Overview
+## Oversigt
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Engestofte Gods afholder hvert år et julemarked med over 60 stadeholdere fordelt på 5 zoner. Event-koordinator Lise opdaterede tidligere stadeholderlisten på hjemmesiden manuelt ved at skrive HTML direkte i Squarespace — tidskrævende, fejlbehæftet og kræver teknisk viden.
 
-## Features
+Dette projekt løser problemet med en simpel webapp: Lise udfylder en formular med stadeholderoplysninger, AI genererer korrekt formateret HTML, og hun copy-paster det direkte ind på hjemmesiden.
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing
-- Sed do eiusmod tempor incididunt ut labore et dolore
-- Ut enim ad minim veniam, quis nostrud exercitation
-- Ullamco laboris nisi ut aliquip ex ea commodo
+## Funktioner
+
+- Formular med felterne: virksomhedsnavn, beskrivelse, hjemmeside og zone
+- 5 faste zoner som dropdown: Den gamle avlsgård, Hestestalden, Laden, Kostalden, Jagtstuen
+- Claude AI genererer Squarespace-kompatibel HTML med korrekt centrering og formatering
+- "Kopiér HTML"-knap til hurtig copy-paste
+- Ingen login, ingen database — ren input → AI → output
 
 ## Tech Stack
 
-**Frontend:** Lorem, Ipsum  
-**Backend:** Dolor, Sit  
-**Database:** Amet, Consectetur
+**Frontend:** HTML, CSS, vanilla JavaScript  
+**Backend:** Python, Flask  
+**AI:** Claude Sonnet via Anthropic API  
 
-## What I Learned
+## Problemet der løses
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Felterne i webapp'en er direkte mapnet fra Engestoftes officielle ansøgningsskema — særligt beskrivelsesfeltet, som ansøgerne selv udfylder og som Lise modtager og skal publicere. Det eliminerer dobbeltarbejdet med at genskrive information i HTML.
+
+## Hvad jeg lærte
+
+- Prompt engineering: hvordan man specificerer præcist HTML-format til et AI-output uden at modellen blander markdown ind
+- Flask som letvægts API-proxy der holder API-nøglen ude af frontend
+- Vigtigheden af server-side output-rensning når AI genererer struktureret tekst
+
+## Kildekode
+
+[github.com/Zuhami/stadeholder-generator](https://github.com/Zuhami/stadeholder-generator)
