@@ -4,44 +4,50 @@
     <title>Ai on Ayman Chaykh</title>
     <link>https://zuhami.github.io/Portfolio/tags/ai/</link>
     <description>Recent content in Ai on Ayman Chaykh</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://zuhami.github.io/Portfolio/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2026 Ayman Chaykh</copyright>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://zuhami.github.io/Portfolio/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    
     <item>
       <title>AI-drevet stadeholder-generator</title>
       <link>https://zuhami.github.io/Portfolio/projects/project-one/</link>
       <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      
       <guid>https://zuhami.github.io/Portfolio/projects/project-one/</guid>
       <description></description>
+      
     </item>
-    <item>
-      <title>AI-drevet stadeholder-generator</title>
-      <link>https://zuhami.github.io/Portfolio/projects/stadeholder-generator/</link>
-      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://zuhami.github.io/Portfolio/projects/stadeholder-generator/</guid>
-      <description></description>
-    </item>
+    
     <item>
       <title>Projektopgave — AI-drevet stadeholder-generator til Engestofte julemarked</title>
       <link>https://zuhami.github.io/Portfolio/posts/gang-3-ai-stadeholder-generator/</link>
       <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
+      
       <guid>https://zuhami.github.io/Portfolio/posts/gang-3-ai-stadeholder-generator/</guid>
       <description></description>
+      
     </item>
+    
     <item>
       <title>Gang 2 — Retrieval Augmented Generation (RAG)</title>
       <link>https://zuhami.github.io/Portfolio/posts/gang-2-rag/</link>
       <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      
       <guid>https://zuhami.github.io/Portfolio/posts/gang-2-rag/</guid>
       <description></description>
+      
     </item>
+    
     <item>
       <title>Gang 1 — Kursusintro &amp; Portfolio-opsætning</title>
       <link>https://zuhami.github.io/Portfolio/posts/gang-1-kursusintro-portfolio/</link>
       <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
+      
       <guid>https://zuhami.github.io/Portfolio/posts/gang-1-kursusintro-portfolio/</guid>
       <description></description>
+      
     </item>
+    
   </channel>
 </rss>

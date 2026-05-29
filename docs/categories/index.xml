@@ -4,8 +4,10 @@
     <title>Categories on Ayman Chaykh</title>
     <link>https://zuhami.github.io/Portfolio/categories/</link>
     <description>Recent content in Categories on Ayman Chaykh</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <copyright>© 2026 Ayman Chaykh</copyright>
     <atom:link href="https://zuhami.github.io/Portfolio/categories/index.xml" rel="self" type="application/rss+xml" />
+    
   </channel>
 </rss>
