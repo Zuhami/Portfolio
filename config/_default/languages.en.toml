@@ -13,8 +13,8 @@ title = "Ayman Chaykh"
 
 [params.author]
   name = "Ayman Chaykh"
-  headline = "Developer & Designer"
-  bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+  headline = "AI & Web Developer"
+  bio = "Studerende på datamatikeruddannelsen med fokus på AI-drevne applikationer. Bygger løsninger der kombinerer moderne sprogmodeller med simpel, brugbar software."
   links = [
     { github = "https://github.com/aymanchaykh" },
     { linkedin = "https://linkedin.com/in/aymanchaykh" },
