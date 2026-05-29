@@ -37,6 +37,6 @@ Felterne i webapp'en er direkte mapnet fra Engestoftes officielle ansøgningsske
 - Flask som letvægts API-proxy der holder API-nøglen ude af frontend
 - Vigtigheden af server-side output-rensning når AI genererer struktureret tekst
 
-## Kildekode
+## Links
 
-[github.com/Zuhami/stadeholder-generator](https://github.com/Zuhami/stadeholder-generator)
+[🚀 Prøv live demo](https://stadeholder-generator.onrender.com) &nbsp;·&nbsp; [Kildekode på GitHub](https://github.com/Zuhami/stadeholder-generator)
