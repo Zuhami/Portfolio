@@ -3,7 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://zuhami.github.io/Portfolio/projects/project-one/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/projects/stadeholder-generator/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -17,22 +22,77 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/about/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/tags/ai/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://zuhami.github.io/Portfolio/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/ipsum/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/tags/claude/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/lorem/</loc>
+    <loc>https://zuhami.github.io/Portfolio/tags/flask/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/html/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/python/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/series/ai-drevne-applikationer/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/api/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/posts/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/posts/gang-3-ai-stadeholder-generator/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/refleksion/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/series/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/webapp/</loc>
+    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/about/</loc>
     <lastmod>2026-04-27T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -42,28 +102,23 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/tags/dify/</loc>
+    <lastmod>2026-04-17T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/web/</loc>
-    <lastmod>2026-04-27T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/posts/gang-2-rag/</loc>
+    <lastmod>2026-04-17T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/ai/</loc>
-    <lastmod>2026-04-10T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/tags/llm/</loc>
+    <lastmod>2026-04-17T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/series/ai-driven-applications/</loc>
-    <lastmod>2026-04-10T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://zuhami.github.io/Portfolio/posts/</loc>
-    <lastmod>2026-04-10T00:00:00+00:00</lastmod>
+    <loc>https://zuhami.github.io/Portfolio/tags/rag/</loc>
+    <lastmod>2026-04-17T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -82,17 +137,12 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/reflection/</loc>
-    <lastmod>2026-04-10T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://zuhami.github.io/Portfolio/series/</loc>
-    <lastmod>2026-04-10T00:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://zuhami.github.io/Portfolio/tags/dolor/</loc>
+    <lastmod>2026-03-15T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://zuhami.github.io/Portfolio/tags/ipsum/</loc>
     <lastmod>2026-03-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -102,7 +152,7 @@
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://zuhami.github.io/Portfolio/tags/api/</loc>
+    <loc>https://zuhami.github.io/Portfolio/tags/lorem/</loc>
     <lastmod>2026-02-01T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

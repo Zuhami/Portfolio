@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Api on Ayman Chaykh</title>
-    <link>https://zuhami.github.io/Portfolio/tags/api/</link>
-    <description>Recent content in Api on Ayman Chaykh</description>
+    <title>Webapp on Ayman Chaykh</title>
+    <link>https://zuhami.github.io/Portfolio/tags/webapp/</link>
+    <description>Recent content in Webapp on Ayman Chaykh</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 13 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://zuhami.github.io/Portfolio/tags/api/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Project Three</title>
-      <link>https://zuhami.github.io/Portfolio/projects/project-three/</link>
-      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://zuhami.github.io/Portfolio/projects/project-three/</guid>
-      <description></description>
-    </item>
+    <atom:link href="https://zuhami.github.io/Portfolio/tags/webapp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projektopgave — AI-drevet stadeholder-generator til Engestofte julemarked</title>
       <link>https://zuhami.github.io/Portfolio/posts/gang-3-ai-stadeholder-generator/</link>
