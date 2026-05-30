@@ -93,6 +93,25 @@ nav a:hover {
   text-shadow: var(--glow-cyan) !important;
 }
 
+/* ── Show more / pagination knapper ── */
+a[href*="page"],
+[class*="more"],
+[class*="pagination"] a,
+[class*="show-more"],
+button[class*="more"] {
+  background: transparent !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--neon-cyan) !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+  pointer-events: auto !important;
+}
+
+[class*="more"]:hover,
+[class*="pagination"] a:hover {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: var(--glow-cyan) !important;
+}
+
 /* ── Kun LIST-kort får glassmorphism (ikke prose-artikel-indhold) ── */
 .article-grid article,
 .list article,
