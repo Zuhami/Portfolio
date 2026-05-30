@@ -46,6 +46,14 @@ div > p,
   background-color: transparent !important;
 }
 
+/* ── Override Blowfish/Tailwind card border og background ── */
+article.article-link--card,
+.article-link--card {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif !important;
@@ -112,19 +120,24 @@ button[class*="more"] {
   box-shadow: var(--glow-cyan) !important;
 }
 
-/* ── Kun LIST-kort får glassmorphism (ikke prose-artikel-indhold) ── */
+/* ── Kort — ingen synlig boks som standard, neon-glow ved hover ── */
+.article-link--card,
 .article-grid article,
 .list article,
 [class*="grid"] article,
 [class*="card-grid"] article {
-  background: rgba(0, 229, 255, 0.03) !important;
-  border: 1px solid var(--glass-border) !important;
-  backdrop-filter: blur(8px) !important;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s, background 0.3s !important;
 }
 
+.article-link--card:hover,
 [class*="grid"] article:hover,
 .list article:hover {
+  background: rgba(0, 229, 255, 0.04) !important;
   border-color: var(--neon-cyan) !important;
   box-shadow: var(--glow-cyan) !important;
   transform: translateY(-3px) !important;
