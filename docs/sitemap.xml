@@ -28,7 +28,13 @@
   </url>
   <url>
     <loc>https://zuhami.github.io/Portfolio/posts/</loc>
-    <lastmod>2026-05-13T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://zuhami.github.io/Portfolio/posts/projekt-fremdrift-del-1/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
