@@ -1,0 +1,195 @@
+/* ================================================
+   FUTURISTIC PORTFOLIO — Custom CSS
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Variables ── */
+:root {
+  --neon-cyan:    #00e5ff;
+  --neon-purple:  #b44fff;
+  --neon-green:   #39ff14;
+  --glass-bg:     rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(0, 229, 255, 0.15);
+  --glow-cyan:    0 0 20px rgba(0, 229, 255, 0.4);
+  --glow-purple:  0 0 20px rgba(180, 79, 255, 0.4);
+}
+
+/* ── Base & Background ── */
+body {
+  font-family: 'Space Grotesk', sans-serif !important;
+  background-color: #050a10 !important;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(0, 229, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(180, 79, 255, 0.06) 0%, transparent 50%),
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .font-mono {
+  font-family: 'Space Mono', monospace !important;
+}
+
+/* ── Neon heading accent ── */
+h1 {
+  background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Navigation ── */
+header, nav {
+  background: rgba(5, 10, 16, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+nav a {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+  transition: color 0.2s, text-shadow 0.2s !important;
+}
+
+nav a:hover {
+  color: var(--neon-cyan) !important;
+  text-shadow: var(--glow-cyan) !important;
+}
+
+/* ── Cards — glassmorphism ── */
+article,
+.card,
+[class*="card"],
+.rounded-md,
+.rounded-xl {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s !important;
+}
+
+article:hover,
+.card:hover,
+[class*="card"]:hover {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: var(--glow-cyan), inset 0 0 40px rgba(0, 229, 255, 0.03) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── Links ── */
+a {
+  transition: color 0.2s, text-shadow 0.2s !important;
+}
+
+a:hover {
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important;
+}
+
+/* ── Tags / Badges ── */
+span[class*="tag"],
+span[class*="badge"],
+div[class*="tag"],
+a[class*="tag"] {
+  background: rgba(0, 229, 255, 0.08) !important;
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+  color: var(--neon-cyan) !important;
+  font-family: 'Space Mono', monospace !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 4px !important;
+}
+
+/* ── Buttons ── */
+button,
+[class*="btn"],
+a[class*="btn"] {
+  background: rgba(0, 229, 255, 0.1) !important;
+  border: 1px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  transition: background 0.2s, box-shadow 0.2s !important;
+}
+
+button:hover,
+[class*="btn"]:hover {
+  background: rgba(0, 229, 255, 0.2) !important;
+  box-shadow: var(--glow-cyan) !important;
+}
+
+/* ── Code blocks ── */
+pre {
+  background: rgba(0, 229, 255, 0.04) !important;
+  border: 1px solid rgba(0, 229, 255, 0.15) !important;
+  border-left: 3px solid var(--neon-cyan) !important;
+}
+
+/* ── Profile section ── */
+.profile img,
+img[class*="avatar"],
+img[class*="profile"] {
+  border: 2px solid var(--neon-cyan) !important;
+  box-shadow: var(--glow-cyan) !important;
+}
+
+/* ── Dividers ── */
+hr {
+  border-color: var(--glass-border) !important;
+}
+
+/* ── Table of contents ── */
+[class*="toc"] {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-left: 3px solid var(--neon-purple) !important;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--glass-border) !important;
+  background: rgba(5, 10, 16, 0.9) !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050a10; }
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 3px;
+  box-shadow: var(--glow-cyan);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 229, 255, 0.2);
+  color: var(--neon-cyan);
+}
+
+/* ── Subtle scan-line overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 229, 255, 0.012) 2px,
+    rgba(0, 229, 255, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
